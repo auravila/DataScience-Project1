@@ -14,13 +14,26 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-ds = ### YOUR CODE HERE ###
+### Your code here ###
+### Reference to consume script from dataset ###
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = 'bc4ac49b-f3f0-45bb-995b-638f2c80696f'
+resource_group = 'aml-quickstarts-130121'
+workspace_name = 'quick-starts-ws-130121'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+dataset = Dataset.get_by_name(workspace, name='Bank-marketing')
+ds = dataset.to_pandas_dataframe()
 
 x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
-
-### YOUR CODE HERE ###a
+### YOUR CODE HERE ###
+x, y = train_test_split (ds, test_size = 0.8, random_state = , shuffle = true)
 
 run = Run.get_context()
 
