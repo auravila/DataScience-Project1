@@ -21,19 +21,19 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 from azureml.core import Workspace, Dataset
 
 subscription_id = 'Azure Sponsorship - Udacity - 23'
-resource_group = 'aml-quickstarts-130861'
-workspace_name = 'quick-starts-ws-130861'
+resource_group = 'aml-quickstarts-130739'
+workspace_name = 'quick-starts-ws-130739'
 
 workspace = Workspace(subscription_id, resource_group, workspace_name)
 
 dataset = Dataset.get_by_name(workspace, name='Bank-marketing')
 ds = dataset.to_pandas_dataframe()
 
-x, y = clean_data(ds)
+#x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
 ### YOUR CODE HERE ###
-x, y = train_test_split (ds, test_size = 0.8, random_state = , shuffle = true)
+x, y = train_test_split (ds, test_size = 0.8, random_state = 42 , shuffle = true)
 
 run = Run.get_context()
 
@@ -63,6 +63,7 @@ def clean_data(data):
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
     
+x, y = clean_data(ds)
 
 def main():
     # Add arguments to script
