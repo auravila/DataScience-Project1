@@ -20,9 +20,9 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
 from azureml.core import Workspace, Dataset
 
-subscription_id = 'bc4ac49b-f3f0-45bb-995b-638f2c80696f'
-resource_group = 'aml-quickstarts-130121'
-workspace_name = 'quick-starts-ws-130121'
+subscription_id = 'Azure Sponsorship - Udacity - 23'
+resource_group = 'aml-quickstarts-130861'
+workspace_name = 'quick-starts-ws-130861'
 
 workspace = Workspace(subscription_id, resource_group, workspace_name)
 
