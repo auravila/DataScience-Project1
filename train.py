@@ -18,24 +18,25 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 ### Reference to consume script from dataset ###
 # azureml-core of version 1.0.72 or higher is required
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
-from azureml.core import Workspace, Dataset
+#from azureml.core import Workspace, Dataset
 
-subscription_id = '502bce8d-d66b-4661-a423-f21e61d20123'
-resource_group = 'aml-quickstarts-130739'
-workspace_name = 'quick-starts-ws-130739'
+#from azureml.core import Workspace, Dataset
+#ws = Workspace.from_config()
 
-workspace = Workspace(subscription_id, resource_group, workspace_name)
+##subscription_id = '502bce8d-d66b-4661-a423-f21e61d20123'
+##resource_group = 'aml-quickstarts-130739'
+##workspace_name = 'quick-starts-ws-130739'
 
-dataset = Dataset.get_by_name(workspace, name='Bank-marketing')
-ds = dataset.to_pandas_dataframe()
+#workspace = Workspace(ws.subscription_id,ws.resource_group,ws.name)
+#ds = dataset.to_pandas_dataframe()
 
 #x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
 ### YOUR CODE HERE ###
-x, y = train_test_split (ds, test_size = 0.8, random_state = 42 , shuffle = true)
+#x,y = train_test_split (ds,test_size=0.8,random_state=42,shuffle=True)
 
-run = Run.get_context()
+#run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -60,10 +61,15 @@ def clean_data(data):
     x_df["month"] = x_df.month.map(months)
     x_df["day_of_week"] = x_df.day_of_week.map(weekdays)
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
-
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
-    
-x, y = clean_data(ds)
+    return x_df,y_df
+
+## Self note: Indentation ares key for python to work ##    
+url = 'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
+ds = TabularDatasetFactory.from_delimited_files(path=url)
+x,y =clean_data(ds)
+x_train ,x_test ,y_train ,y_test =train_test_split(x,y,test_size=0.8,random_state=42,shuffle=True)
+run = Run.get_context()
 
 def main():
     # Add arguments to script
