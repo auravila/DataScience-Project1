@@ -22,6 +22,11 @@ nevertheless this is the result of a discrete set of values for random sampling 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
+The pipeline is a sequential call to a train script which references a dataset, cleanses it, split the data into a train and test sets and calls a regresion model.
+The regresion model parameter are provided by the hyperdrive model Random sampling and the discrete set of parameters defined by choice.
+
+The metric selected to return is accuracy which is constrained by a bandit policy, i.e. if a particular run does not meet the threshold this child run is terminated.
+
 **What are the benefits of the parameter sampler you chose?**
 
 choosing a discrete set of parameters guarantees the same probability to each value of the list. A small set of parameters provides a quick turnaround of the
@@ -37,9 +42,27 @@ The policy early terminates a child run where the primary metric is not met with
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
+AutoML model is more accurate than the random sampling model by 1%. AutoML also calculated all of the additional metrics and selected the most optimized combination
+of metris. This reassures that the model is accurate enough for prediction.
+
+Regarding architecture difference, I believe is mainly in the sequential execution of a defined experiment by multiple child runs as opposed to the AutoML execution 
+which runs through all of the available algorithms and retrieved the best most optimized resultset.
+
+for this particular scenario 1% difference is inmaterial, my best guess here maybe the poor selection of hyperdrive parameters or model. AzureML makes modeling simpler
+but it limits knowledgeable developers to use their own algorithms.
+
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
+
+Try out other types of model and algorithms and a larger sets of parameters. Generate simple predictions to confirm the validity of the model. 
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
 **Image of cluster marked for deletion**
+
+Image attached to main project - root folders
+
+Command used
+delcluster = ComputeTarget.delete(MYcompute_cluster)
+
+
