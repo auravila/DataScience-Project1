@@ -26,6 +26,10 @@ The regresion model parameters are provided by the hyperdrive model Random sampl
 
 The primery metric selected for an optimized return is accuracy which is constrained by a bandit policy, i.e. if a particular run does not meet the threshold this child run is terminated.
 
+The Pipeline:
+
+
+
 **What are the benefits of the parameter sampler you chose?**
 
 Choosing a discrete set of parameters guarantees the same probability for each value of the list. A small set of parameters provides a quick turnaround of the
@@ -40,6 +44,14 @@ The policy early terminates a child run where the primary metric is not met with
 
 AutoML differs from hyperdrive mainly because AutoML runs multipe pipelines in paralled with different algorithms and parameters at the same time. Hyperdrive runs parameters are limited by time and cost.
 
+The model:
+
+1-) Load data from a dataset
+2-) Train this data (random split)
+3-) Configure AutoMl parameters (classification model,timeout,primary_metric)
+4-) Create Experiment (Assing AutoML Config)
+5-) Run Experiment
+
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
@@ -50,14 +62,14 @@ of metris by the VotingEnsemble algorithm. Automl provided a holistic result for
 Regarding architecture difference, I believe is mainly the sequential execution of a defined experiment by multiple child runs as opposed to the AutoML execution 
 which runs through all of the available algorithms and retrieves the best and most optimized resultset.
 
-For this particular scenario 1% difference is inmaterial but my best guess here is that the difference may be due to the poor selection of hyperdrive parameters of the model. 
+For this particular scenario 1% difference is inmaterial but my best guess here is that the difference may be due to the poor selection of hyperdrive parameters of the model and also the different approaches taken to train the datasets. e.g. For the first experiment train_test_split was used and for AutoML random_split.
 
 AzureML simplifies modelling but it could limits knowledgeable developers to use and customize their own algorithms.
 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
-Try out other types of model and algorithms and a larger sets of parameters. Generate simple predictions to confirm the validity of the model. 
+Try out other types of model and algorithms with a larger sets of parameters, use the same tranining mechanisms. Generate simple predictions to confirm the validity of the model. 
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
@@ -68,4 +80,5 @@ Image attached to main project - root folders
 Command used
 delcluster = ComputeTarget.delete(MYcompute_cluster)
 
+![alt text](https://github.com/auravila/DataScience-Project1/blob/main/Cluster%20Delete.jpeg)
 
