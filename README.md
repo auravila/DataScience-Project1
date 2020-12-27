@@ -67,8 +67,6 @@ experiment results for initial evaluation.
 
 **What are the benefits of the early stopping policy you chose?**
 
-The policy early terminates a child run where the primary metric is not met within the policies defined parameters. 
-
 The policy early terminates any runs where the primary metric is not within the specified slack factor/slack amount with respect to the best performing training run.
 
 The Bandit policy takes the following parameters:
@@ -96,6 +94,11 @@ The model:
 4-) Create Experiment (Assing AutoML Config)
 5-) Run Experiment
 
+For this classification excecise the model that produced the best outcome was the VotingEnsemble
+
+The idea behind the VotingClassifier is to combine conceptually different machine learning classifiers and use a majority vote or the average predicted probabilities (soft vote) to predict the class labels. Such a classifier can be useful for a set of equally well performing model in order to balance out their individual weaknesses. 
+
+Reference: https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
@@ -115,7 +118,16 @@ AzureML simplifies modelling but it could limits knowledgeable developers to use
 
 Try out other types of model and algorithms with a larger sets of parameters, use the same tranining mechanisms. Generate simple predictions to confirm the validity of the model. 
 
-Try out the the Bayesion Parameter sampling. A Bayesian optimizer samples a subset of hyperparameters combinations and the difference between random sampling and grid search resides in the way each combination is chosen.
+Also try out a different metrics within the chosen model such as:
+
+•	Precision: It answers the question: When the classifier predicts yes, how often is it correct
+•	Recall: It answers the question: When it’s actually Yes, how often does the classifier predict yes? 
+•	False Positive Rate (FPR) : It answers the question: When it’s actually no, how often does the classifier predict Yes? 
+•	F1 Score: This is a harmonic mean of the Recall and Precision. Mathematically calculated as (2 x precision x recall)/(precision+recall). 
+
+Run models with the grid search and the Bayesion Parameter sampling. 
+
+A Bayesian optimizer samples a subset of hyperparameters combinations and the difference between random sampling and grid search resides in the way each combination is chosen.
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
