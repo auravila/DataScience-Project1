@@ -100,6 +100,19 @@ The idea behind the VotingClassifier is to combine conceptually different machin
 
 Reference: https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier
 
+List of Hyperparameters values best_run.get_tags()
+
+{'_aml_system_azureml.automlComponent': 'AutoML',
+ '_aml_system_ComputeTargetStatus': '{"AllocationState":"steady","PreparingNodeCount":0,"RunningNodeCount":1,"CurrentNodeCount":1}',
+ 'ensembled_iterations': '[1, 19, 0, 22, 14, 20, 4, 5]',
+ 'ensembled_algorithms': "['XGBoostClassifier', 'LightGBM', 'LightGBM', 'LightGBM', 'XGBoostClassifier', 'XGBoostClassifier', 'RandomForest', 'RandomForest']",
+ 'ensemble_weights': '[0.21428571428571427, 0.21428571428571427, 0.14285714285714285, 0.14285714285714285, 0.07142857142857142, 0.07142857142857142, 0.07142857142857142, 0.07142857142857142]',
+ 'best_individual_pipeline_score': '0.9150270346813996',
+ 'best_individual_iteration': '1',
+ '_aml_system_automl_is_child_run_end_telemetry_event_logged': 'True',
+ 'model_explain_run_id': 'AutoML_9e426425-1c45-4632-b78c-52d20e604402_ModelExplain',
+ 'model_explanation': 'True'}
+
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
