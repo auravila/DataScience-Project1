@@ -33,10 +33,9 @@ C : float, optional (default=1.0)
 Inverse of regularization strength; must be a positive float. Like in support vector machines, smaller values specify stronger regularization.
 
 C is used in order to get a perfect trade off between bias and high variance in the model. C is used to maintaing the following relationship: Lambda = 1/C
-(regularization)
 
 max_iter : int
-Defines the maximum number of iterations taken for the model to converge. Number of times the logistic regression will iterate in order to converge, default value = 100 but this can be changed depending on the volume of the train data.
+Defines the maximum number of iterations taken for the model to converge. Default value = 100 but this can be changed depending on the volume of the train data.
 
 Reference:
 https://scikit-learn.org/0.16/modules/generated/sklearn.linear_model.LogisticRegression.html
@@ -121,10 +120,15 @@ Try out other types of model and algorithms with a larger sets of parameters, us
 
 Also try out a different metrics within the chosen model such as:
 
-•	Precision: It answers the question: When the classifier predicts yes, how often is it correct
-•	Recall: It answers the question: When it’s actually Yes, how often does the classifier predict yes? 
-•	False Positive Rate (FPR) : It answers the question: When it’s actually no, how often does the classifier predict Yes? 
-•	F1 Score: This is a harmonic mean of the Recall and Precision. Mathematically calculated as (2 x precision x recall)/(precision+recall). 
+•	Precision: It answers the question: When the classifier predicts yes, how often is it correc
+
+•	Recall: It answers the question: When it’s actually Yes, how often does the classifier predict yes?
+
+•	False Positive Rate (FPR) : It answers the question: When it’s actually no, how often does the classifier predict Yes?
+
+•	F1 Score: This is a harmonic mean of the Recall and Precision. Mathematically calculated as (2 x precision x recall)/(precision+recall).
+
+Other options:
 
 Run models with the grid search and the Bayesion Parameter sampling. 
 
